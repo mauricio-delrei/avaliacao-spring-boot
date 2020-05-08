@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+
+
 @Entity
 public class Estudante implements Serializable{
 	
@@ -17,15 +21,15 @@ public class Estudante implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id;	
 	
 	private String nome;
 	
 	private String email;
 	
-	private Integer telefone;	
+	private int telefone;	
 	
-    private Integer matricula;
+    private int matricula;
 	  
 	private String curso;
 	
@@ -55,19 +59,23 @@ public class Estudante implements Serializable{
 		this.email = email;
 	}
 
-	public Integer getInteger() {
+	
+
+	public int getTelefone() {
 		return telefone;
 	}
 
-	public void setInteger(Integer telefone) {
+	public void setTelefone(int telefone) {
 		this.telefone = telefone;
 	}
+	
 
-	public Integer getMatricula() {
+	
+	public int getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(Integer matricula) {
+	public void setMatricula(int matricula) {
 		this.matricula = matricula;
 	}
 
