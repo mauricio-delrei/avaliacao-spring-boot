@@ -1,35 +1,64 @@
 package br.com.tokiomarine.seguradora.avaliacao.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
-import br.com.tokiomarine.seguradora.avaliacao.entidade.Estudante;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import br.com.tokiomarine.seguradora.avaliacao.exception.IdNaoValidoServiceException;
+import br.com.tokiomarine.seguradora.avaliacao.model.Estudante;
 import br.com.tokiomarine.seguradora.avaliacao.repository.EstudanteRepository;
 
-// TODO Efetue a implementação dos métodos da classe service
+@Service
+@Transactional
 public class EstudanteServiceImpl implements EstudandeService {
 
-	EstudanteRepository repository;
+	@Autowired
+	 private EstudanteRepository repository;
 
 	@Override
 	public void cadastrarEstudante(@Valid Estudante estudante) {
+		
+		repository.save(estudante);
 
 	}
 
 	@Override
 	public void atualizarEstudante(@Valid Estudante estudante) {
+		
+		repository.save(estudante);
 
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Estudante> buscarEstudantes() {
-		return null;
+		return (List<Estudante>) repository.findAll();
+	}	
+
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Estudante> buscarEstudante(Long id) {
+		// TODO Auto-generated method stub
+		return repository.findById(idValido(id));
 	}
 
 	@Override
-	public Estudante buscarEstudante(long id) {
-		throw new IllegalArgumentException("Identificador inválido:" + id);
+	public void exluir(Long id) {
+		// TODO Auto-generated method stub
+		repository.deleteById(idValido(id));
+		
 	}
+	
+	private Long idValido(Long id) {
+        if (id <= 0) {
+            throw new IdNaoValidoServiceException("Valor do campo id está invalido. Deve ser uma valor inteiro maior que zero.");
+        }
+        return id;
+    }
 
 }

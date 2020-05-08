@@ -1,0 +1,11 @@
+São Paulo, 08/05/2020
+Nome: Maurício De Araújo Del Rei.
+Email:mauricioaraujodelrei@gmail.com
+Celular:(11)96066-2041
+---------------------------------------
+Obs: Foi feito a implantação da API Rest.
+Tive alguns imprevistos e já era para ter entregue.
+O Front-End não foi feito, pois meu skill é mais Back-End, mas estou tentando fazer o Front funcionar,
+ msa quis realizar a entrega do Back.
+ 
+Grato e a disposição!
